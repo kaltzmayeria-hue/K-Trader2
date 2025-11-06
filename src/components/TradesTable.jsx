@@ -20,14 +20,18 @@ import { useAuth } from "@/contexts/SupabaseAuthContext";
 
 /* ===================== HELPERS CORRIGIDOS ===================== */
 
-// normaliza direção Bybit/Manual
 const normalizeDir = (v) => {
   if (!v) return "-";
   const s = String(v).trim().toUpperCase();
-  if (s.includes("BUY")) return "LONG";
-  if (s.includes("SELL")) return "SHORT";
+
+  // Se já vem correto da tabela, só retorna
   if (s === "LONG" || s === "SHORT") return s;
-  return "LONG";
+
+  // Quando vier da Bybit em BUY/SELL (somente na sync)
+  if (s === "BUY") return "LONG";
+  if (s === "SELL") return "SHORT";
+
+  return s;
 };
 
 const num = (v) => {
