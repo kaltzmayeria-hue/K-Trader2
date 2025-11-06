@@ -1,0 +1,2 @@
+## Pages
+- [K-TRADER - Controle de Trades](/): Sistema profissional de controle e gerenciamento de trades de criptomoedas
