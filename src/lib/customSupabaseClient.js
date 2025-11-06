@@ -1,6 +1,11 @@
+// K-Trader2/src/lib/customSupabaseClient.js
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://tsqjsghujhbsjvfbsann.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzcWpzZ2h1amhic2p2ZmJzYW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4OTM2MjIsImV4cCI6MjA3NTQ2OTYyMn0.X8_GsZqWyr_nInApfUjnKWG23HDnq4O3UD-rMCqAf-E';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('Supabase env vars ausentes: VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY');
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
